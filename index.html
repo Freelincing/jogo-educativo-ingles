@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingua Sprint - Practice English</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNavbar" style="display: none;">
+        <div class="container-fluid">
+            <span class="navbar-brand">🚀 Lingua Sprint</span>
+            <button class="btn btn-leaderboard" onclick="showLeaderboardModal()">
+                🏆 Leaderboard
+            </button>
+        </div>
+    </nav>
+
+    <div id="landingPage" class="landing-container">
+        <div class="landing-card">
+            <div class="logo">🚀 Lingua Sprint</div>
+            <p class="subtitle">Match pairs and boost your English!</p>
+            <div class="mb-4">
+                <input type="text" id="playerName" class="form-control form-control-custom" placeholder="Enter your name" maxlength="20">
+            </div>
+            <button class="btn btn-primary-custom w-100" onclick="startGame()">Start Game</button>
+            <button class="btn btn-secondary w-100 mt-3" onclick="showLeaderboardModal()">🏆 Leaderboard</button>
+        </div>
+    </div>
+
+    <div id="gameScreen" style="display: none;">
+        <div class="game-container">
+            <div class="game-header">
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <div class="stat-box">
+                            <div class="stat-value" id="timer">120</div>
+                            <div class="stat-label">Time Left</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-box">
+                            <div class="stat-value" id="pairsFound">0/5</div>
+                            <div class="stat-label">Pairs Found</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 d-none d-md-block">
+                        <div class="stat-box">
+                            <div class="level-badge" id="levelDisplay">Level 1</div>
+                            <div class="stat-label mt-2">Current Level</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 d-none d-md-block">
+                        <div class="stat-box">
+                            <div class="stat-value" id="playerNameDisplay"></div>
+                            <div class="stat-label">Player</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cards-grid" id="cardsGrid"></div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="leaderboardModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">🏆 Leaderboard - Top 10</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover leaderboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Player</th>
+                                    <th>Level</th>
+                                    <th>Score</th>
+                                    <th>Pairs</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboardBodyModal"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="resultModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultTitle">Game Over!</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <h2 id="finalScore" class="display-4"></h2>
+                        <p class="text-muted" id="finalMessage"></p>
+                    </div>
+                    
+                    <h4 class="mb-3">🏆 Your Rank</h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover leaderboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Player</th>
+                                    <th>Level</th>
+                                    <th>Score</th>
+                                    <th>Pairs</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboardBodyResult"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary-custom" onclick="resetGame()">Play Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="js.js"></script>
+</body>
+</html>
